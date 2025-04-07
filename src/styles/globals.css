@@ -3,6 +3,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* Для IE и Edge */
+  scrollbar-width: none;  /* Для Firefox */
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

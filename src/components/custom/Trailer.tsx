@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaVk } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
@@ -6,11 +6,51 @@ import { FaTwitter } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 
+interface Trailer {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
 function Trailer() {
+  const [trailers, setTrailers] = useState<Trailer[]>([]);
+
+  const auth = process.env.NEXT_PUBLIC_AUTHORIZATION || "";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+          {
+            headers: { accept: "application/json", Authorization: auth },
+          }
+        );
+        const data = await response.json();
+        setTrailers(data.results);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      }
+    };
+
+    fetchData();
+  }, [auth]);
+
   return (
     <div>
-      <div className="flex justify-center mt-[25px]">
-        <div>
+      <div className="flex justify-center mt-[25px] md:mt-[55px]">
+        <div className="md:flex md:justify-between md:w-full">
           <p className="text-[#FFFFFF] font-bold text-2xl mb-[8px]">
             Новые трейлеры
           </p>
@@ -21,28 +61,50 @@ function Trailer() {
       </div>
 
       <div>
-        <img src="/trailer.png" alt="" />
+        <iframe
+          src="https://www.youtube.com/embed/8B1EtVPBSMw?si=A4dwnZPxZCAtZvF-"
+          className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
+        ></iframe>
       </div>
 
-      <div className="flex justify-between">
-        <div>
-          <p className="text-[#FFFFFF] font-bold text-2xl mt-[5px]">Форсаж 9</p>
-          <div className="flex justify-between text-[#6D7792] mt-[3px]">
-            <FaVk />
-            <FaInstagram />
-            <FaFacebookF />
-            <FaTwitter />
+      <div>
+        <div className="flex justify-between">
+          <div>
+            <p className="text-[#FFFFFF] font-bold text-xl mt-[5px]">
+              A Minecraft Movie
+            </p>
+            <div className="flex justify-between text-[#6D7792] mt-[3px]">
+              <FaVk />
+              <FaInstagram />
+              <FaFacebookF />
+              <FaTwitter />
+            </div>
+          </div>
+
+          <div className="flex justify-between gap-3 text-white mt-[7px]">
+            <AiOutlineLike className="w-[30px] h-[30px]" />
+            <AiOutlineDislike className="w-[30px] h-[30px]" />
           </div>
         </div>
-
-        <div className="flex justify-between gap-3 text-white mt-[7px]">
-          <AiOutlineLike className="w-[30px] h-[30px]" />
-          <AiOutlineDislike className="w-[30px] h-[30px]" />
-        </div>
-
-        
       </div>
 
+      <div className="flex gap-[10px] w-full overflow-y-auto">
+        {trailers.map((item) => (
+          <div key={item.id} className="mt-[18px]">
+            <div
+              className="group w-[178px] h-[127px] relative cursor-grab bg-no-repeat bg-center bg-cover rounded-[10px] md:w-[200px] md:h-[130px] xl:w-[260px] xl:h-[180px]"
+              style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})`,
+              }}
+            ></div>
+            <p className="text-[#FFFFFF] font-bold mt-[5px] text-[13px]">
+              {item.title}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      
 
     </div>
   );
