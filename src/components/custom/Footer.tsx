@@ -58,7 +58,7 @@ function Footer() {
           </div>
       </div>
 
-      <div className="bg-[#151A26]">
+      <div>
         <div className="flex flex-col w-full">
           <div className="flex justify-center w-full gap-5 mx-auto mb-[20px] text-[#3C4767] mt-[34px] lg:mt-[50px]">
             <FaVk />
