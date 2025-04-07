@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface movie {
   id: number;
@@ -134,7 +135,7 @@ const Recomendation: React.FC = () => {
       <div className="w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 mt-[28px] gap-4 justify-between w-full">
           {movie.slice(0, 8).map((item) => (
-            <div
+           <Link href={"/about"}> <div
               key={item.id}
               className="relative w-full overflow-hidden group cursor-pointer"
             >
@@ -162,6 +163,7 @@ const Recomendation: React.FC = () => {
                 </p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
