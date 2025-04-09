@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sheet";
 
 import React from "react";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -72,7 +73,10 @@ export default function Header() {
         </div>
 
         <div>
-          <img src="/logo.png" alt="header-logo" className="h-6" />
+          <Link href={"/"}>
+            <img src="/logo.png" alt="header-logo" className="h-6" />
+          </Link>
+
           <div className="flex justify-between mt-[5px] text-[#686868]">
             <FaVk />
             <FaInstagram />
@@ -80,6 +84,7 @@ export default function Header() {
             <FaTwitter />
           </div>
         </div>
+
         <div className="hidden lg:flex">
           <ul className="w-full flex flex-row items-center gap-5 justify-between text-white font-semibold text-[17px] ">
             <li>
@@ -107,7 +112,7 @@ export default function Header() {
         </div>
 
         <div className="lg:flex lg:gap-3">
-            <IoIosSearch className="bg-white text-blue-500 p-3 rounded-xl w-[60px] h-[50px]  hidden lg:block" />
+          <IoIosSearch className="bg-white text-blue-500 p-3 rounded-xl w-[60px] h-[50px]  hidden lg:block" />
           <Button className="bg-[#3657CB] h-8 w-[66px] text-sm font-light md:font-semibold cursor-pointer transition-all duration-500 shadow-[0px_0px_15px_0px_#4871FFCC] hover:bg-gray-300 hover:text-black md:h-10 md:w-[100px] lg:w-[120px] lg:h-[50px]">
             Войти
           </Button>

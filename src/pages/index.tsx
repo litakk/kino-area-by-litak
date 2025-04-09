@@ -1,5 +1,6 @@
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";
+import News from "@/components/custom/News";
 import PopularMovie from "@/components/custom/PopularMovie";
 import PopularPerson from "@/components/custom/PopularPerson";
 import Recomendation from "@/components/custom/Recomendation";
@@ -19,6 +20,7 @@ export default function Home() {
         <Trailer />
         <PopularMovie />
         <PopularPerson/>
+        <News/>
         <Footer />
       </div>
     </div>

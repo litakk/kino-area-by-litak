@@ -43,7 +43,6 @@ const PopularPerson = () => {
 
   return (
     <div>
-      {/* Header */}
       <div className="flex justify-center items-center md:flex-col md:items-center xl:flex-row xl:justify-between xl:items-center">
         <div className="flex gap-2">
           <div>
@@ -57,7 +56,6 @@ const PopularPerson = () => {
             </div>
           </div>
 
-          {/* Burger меню для мобилок */}
           <Sheet>
             <SheetTrigger className="md:hidden">
               <img src="/burger.png" alt="beugermenu-logo" />

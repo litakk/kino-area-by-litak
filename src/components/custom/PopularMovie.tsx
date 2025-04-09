@@ -53,8 +53,6 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
     {}
   );
   const [activeSlide, setActiveSlide] = useState(0);
-  const [totalSlides, setTotalSlides] = useState(0);
-  const [genres, setGenres] = useState<{ [key: number]: string[] }>({});
 
   const popularUrl =
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
@@ -79,8 +77,6 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
             .map((id) => allGenres.find((genre) => genre.id === id)?.name)
             .filter(Boolean) as string[];
         });
-
-        setGenres(genresMap);
       });
   }, [popularUrl, generesUrl]);
 
@@ -95,9 +91,6 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
     setActiveSlide(swiper.activeIndex);
   };
 
-  const handleSwiperInit = (swiper: any) => {
-    setTotalSlides(swiper.slides.length);
-  };
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -169,7 +162,6 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
               nextEl: nextRef.current,
             }}
             onSlideChange={handleSlideChange}
-            onInit={handleSwiperInit}
             spaceBetween={50}
             breakpoints={{
               320: {
@@ -242,7 +234,7 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
 
           <div className="flex justify-center mt-5 gap-4 cursor-pointer ">
             <div>
-              <FaArrowLeftLong ref={prevRef} color="white" size={20} />
+              <FaArrowLeftLong color="white" size={20} />
             </div>
             <p className="font-medium text-[17px] text-white no-select no-select-context">
               {" "}
@@ -250,7 +242,6 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
             </p>
             <div>
               <FaArrowLeftLong
-                ref={nextRef}
                 color="white"
                 size={20}
                 className="rotate-180 "

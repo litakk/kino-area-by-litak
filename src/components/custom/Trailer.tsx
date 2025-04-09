@@ -5,6 +5,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
+import { options } from "@/exports";
 
 interface Trailer {
   adult: boolean;
@@ -25,8 +26,18 @@ interface Trailer {
 
 function Trailer() {
   const [trailers, setTrailers] = useState<Trailer[]>([]);
+  const [saveVideo, setsaveVideo] = useState<string>("");
 
   const auth = process.env.NEXT_PUBLIC_AUTHORIZATION || "";
+
+  const changeVideo = (id: number) => {
+    fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
+      .then((res) => res.json())
+      .then((res) => {
+        const select = res.results[0];
+        setsaveVideo(select);
+      });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +73,11 @@ function Trailer() {
 
       <div>
         <iframe
-          src="https://www.youtube.com/embed/8B1EtVPBSMw?si=A4dwnZPxZCAtZvF-"
+          src={
+            saveVideo !== ""
+              ? `https://www.youtube.com/embed/${saveVideo?.key}`
+              : "https://www.youtube.com/embed/8B1EtVPBSMw?si=r-Iq1UD9aYmGYCOq"
+          }
           className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
         ></iframe>
       </div>
@@ -88,13 +103,17 @@ function Trailer() {
         </div>
       </div>
 
-      <div className="flex gap-[10px] w-full overflow-y-auto">
+      <div className="flex gap-[10px] w-full overflow-y-auto scrollbar-hidden">
         {trailers.map((item) => (
-          <div key={item.id} className="mt-[18px]">
+          <div
+            key={item.id}
+            className="mt-[18px]"
+            onClick={() => changeVideo(item?.id)}
+          >
             <div
               className="group w-[178px] h-[127px] relative cursor-grab bg-no-repeat bg-center bg-cover rounded-[10px] md:w-[200px] md:h-[130px] xl:w-[260px] xl:h-[180px]"
               style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
               }}
             ></div>
             <p className="text-[#FFFFFF] font-bold mt-[5px] text-[13px]">
@@ -103,9 +122,6 @@ function Trailer() {
           </div>
         ))}
       </div>
-
-      
-
     </div>
   );
 }

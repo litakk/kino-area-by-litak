@@ -9,7 +9,7 @@ function Footer() {
   return (
     <>
       <div
-        className="w-full rounded flex flex-col items-center px-6 "
+        className="w-full flex flex-col items-center px-6 rounded-[8px]"
         style={{ backgroundImage: "url('/footerBackground.png')" }}
       >
         <div>
