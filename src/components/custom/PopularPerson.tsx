@@ -81,7 +81,7 @@ const PopularPerson = () => {
       <div className="mt-6 flex flex-col xl:flex-row xl:items-start xl:gap-6">
 
         <div className="flex flex-wrap justify-center gap-4 w-full xl:w-[70%]">
-          {person.slice(0, 2).map((item) => (
+          {person.slice(1, 3).map((item) => (
             <div
               key={item.id}
               className="w-[150px] md:w-[200px] lg:w-[250px] xl:w-[calc(50%-12px)] relative"

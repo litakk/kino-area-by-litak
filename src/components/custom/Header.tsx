@@ -25,7 +25,7 @@ export default function Header() {
           <Sheet>
             <SheetTrigger className="md:hidden">
               <img
-                src="burger-menu.png"
+                src="/burger-menu.png"
                 alt="burger-menu"
                 className="bg-white text-blue-500 rounded w-5 h-5"
               />

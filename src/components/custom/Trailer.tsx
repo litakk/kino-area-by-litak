@@ -22,31 +22,34 @@ interface Trailer {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  key: string;
 }
 
-function Trailer() {
-  const [trailers, setTrailers] = useState<Trailer[]>([]);
-  const [saveVideo, setsaveVideo] = useState<string>("");
+interface Video {
+  key: string;
+  value: string;
+}
 
-  const auth = process.env.NEXT_PUBLIC_AUTHORIZATION || "";
+const Trailer = () => {
+  const [trailers, setTrailers] = useState<Trailer[]>([]);
+  const [saveVideo, setSaveVideo] = useState<Video | null>(null);
 
   const changeVideo = (id: number) => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
       .then((res) => res.json())
       .then((res) => {
-        const select = res.results[0];
-        setsaveVideo(select);
-      });
+        const selectedVideo = res.results[0];
+        setSaveVideo(selectedVideo || null);
+      })
+      .catch((error) => console.error("Ошибка при загрузке видео:", error));
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchTrailers = async () => {
       try {
         const response = await fetch(
           "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-          {
-            headers: { accept: "application/json", Authorization: auth },
-          }
+          options
         );
         const data = await response.json();
         setTrailers(data.results);
@@ -55,8 +58,8 @@ function Trailer() {
       }
     };
 
-    fetchData();
-  }, [auth]);
+    fetchTrailers();
+  }, []);
 
   return (
     <div>
@@ -74,8 +77,8 @@ function Trailer() {
       <div>
         <iframe
           src={
-            saveVideo !== ""
-              ? `https://www.youtube.com/embed/${saveVideo?.key}`
+            saveVideo
+              ? `https://www.youtube.com/embed/${saveVideo.key}`
               : "https://www.youtube.com/embed/8B1EtVPBSMw?si=r-Iq1UD9aYmGYCOq"
           }
           className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
@@ -124,6 +127,6 @@ function Trailer() {
       </div>
     </div>
   );
-}
+};
 
 export default Trailer;

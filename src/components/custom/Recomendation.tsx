@@ -140,7 +140,7 @@ const Recomendation: React.FC = () => {
       <div className="w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 mt-[28px] gap-4 justify-between w-full">
           {movie.slice(0, showMore).map((item) => (
-            <Link href={`/cardpage/${item.id}`}>
+            <Link href={`/cardpage/${item.id}`} key={item.id}>
               <div
                 key={item.id}
                 className="relative w-full overflow-hidden group cursor-pointer"
