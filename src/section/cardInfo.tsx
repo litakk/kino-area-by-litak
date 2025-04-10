@@ -79,6 +79,7 @@ const CardInfo = () => {
   const [infoCard, setInfoCard] = useState<CardInfoType | null>(null);
   const [persons, setPersons] = useState<PersonsType[]>([]);
   const [trailers, setTrailers] = useState<Trailer[]>([]);
+  // const [images, setImages] = useState(null);
 
   const context = useContext(IdInfoContext);
 
@@ -122,16 +123,30 @@ const CardInfo = () => {
           options
         );
         const data = await response.json();
-        setTrailers(data.results); // Здесь мы получаем все видео
-        console.log(data.results); // Проверка
+        setTrailers(data.results);
       } catch (error) {
         console.error("Ошибка при загрузке данных трейлеров:", error);
       }
     };
 
+    // const fetchImagesMovie = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       `https://api.themoviedb.org/3/movie/${params.id}/images?language=ru-RU`,
+    //       options
+    //     );
+    //     const data = await response.json();
+    //     setImages(data);
+    //     console.log(data);
+    //   } catch (error) {
+    //     console.log("Ошибка при загрузке данных изображений фильма:", error);
+    //   }
+    // };
+
     fetchData();
     fetchPerson();
     fetchTrailers();
+    // fetchImagesMovie();
   }, [params.id]);
 
   if (!infoCard) return <div>Загрузка данных...</div>;
@@ -268,7 +283,7 @@ const CardInfo = () => {
             </div>
           </div>
 
-          <div>
+          <div className="mb-[50px]">
             {trailers.length > 0 &&
               trailers.map((item) => (
                 <div key={item.id}>
@@ -289,18 +304,22 @@ const CardInfo = () => {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <div className="flex justify-center mt-[25px] md:mt-[55px]">
           <div className="md:flex md:justify-between md:w-full">
             <p className="text-[#FFFFFF] font-bold text-2xl mb-[8px]">
               Постеры к фильму
             </p>
-            <p className="text-[#FFFFFF] ml-[35px] font-bold mb-[18px]">
+            <p className="text-[#FFFFFF] ml-[55px] font-bold mb-[18px]">
               Все постеры ➡
             </p>
           </div>
         </div>
       </div>
+
+      <div>
+        <div></div>
+      </div> */}
     </div>
   );
 };

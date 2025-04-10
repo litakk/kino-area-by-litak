@@ -97,10 +97,38 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
   return (
     <>
       <div className="mt-8">
-        <div className="flex md:block justify-center items-center md:flex-col md:items-center xl:flex-row xl:justify-between xl:items-center">
-          <p className="font-black text-2xl text-white text-nowrap md:text-4xl md:mb-[50px]">
+        <div className="flex flex-row justify-center  md:flex-col xl:flex-row xl:justify-between xl:items-center gap-2 xl:gap-4 mb-6">
+          {/* Слева — Заголовок */}
+          <p className="font-black text-2xl md:text-4xl text-white whitespace-nowrap">
             Популярные фильмы
           </p>
+
+          {/* Центр — Линия (только XL) */}
+          <img
+            src="/line.png"
+            alt="line"
+            className="hidden xl:block"
+          />
+
+          {/* Справа — Список годов (только от md и выше) */}
+          <div className="hidden md:flex gap-8 xl:w-auto">
+            {timesArr.map((str, indx) => (
+              <p
+                key={indx}
+                onClick={() => setActText(indx)}
+                className={`font-bold text-[15px] cursor-pointer transition-all duration-200 ease-in
+          ${
+            actText === indx
+              ? "text-white"
+              : "text-[#818181c5] hover:text-white"
+          }`}
+              >
+                {str}
+              </p>
+            ))}
+          </div>
+
+          {/* Мобильное меню (бургер) — только для md и ниже */}
           <div className="mb-[4px] md:hidden">
             <Sheet>
               <SheetTrigger className="h-7 w-7 flex items-center justify-center rounded-[5px] cursor-pointer transition-all ease-in">
@@ -113,13 +141,14 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
               <SheetContent side="right" className="bg-[#1e2538c9]">
                 <SheetHeader>
                   <SheetTitle className="text-center mx-auto">
-                    <img src="/mainLogo.png" alt="" />
+                    <img src="/line.png" alt="line" />
                   </SheetTitle>
                   <SheetDescription className="text-center mx-auto mt-3 pb-5">
                     <ul className="flex flex-col items-center text-sm leading-10 font-semibold text-white">
                       {timesArr.map((str, indx) => (
                         <li
                           key={indx}
+                          onClick={() => setActText(indx)}
                           className="relative group w-fit cursor-pointer"
                         >
                           {str}
@@ -131,26 +160,6 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
                 </SheetHeader>
               </SheetContent>
             </Sheet>
-          </div>
-          <div className="hidden mt-2 md:flex w-[70%] justify-between xl:w-[40%]">
-            {timesArr.map((str, indx) => (
-              <div
-                key={indx}
-                className="font-bold text-[15px] text-[#818181c5]"
-              >
-                <p
-                  onClick={() => setActText(indx)}
-                  className={`cursor-pointer transition-all duration-200 ease-in
-                                    ${
-                                      actText === indx
-                                        ? "text-white"
-                                        : "text-[#818181c5]"
-                                    }`}
-                >
-                  {str}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 

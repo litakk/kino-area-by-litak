@@ -43,7 +43,7 @@ const PopularPerson = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center md:flex-col md:items-center xl:flex-row xl:justify-between xl:items-center">
+      <div className="flex justify-start items-center md:flex-col md:items-start xl:flex-row xl:justify-between xl:items-center">
         <div className="flex gap-2">
           <div>
             <p className="font-black text-2xl text-white text-nowrap md:text-4xl">
