@@ -5,11 +5,10 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { CiPlay1 } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
 import { BiLike } from "react-icons/bi";
-import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
 import { IoMdHeartEmpty } from "react-icons/io";
 import {
   FaFacebook,
-  FaFacebookF,
   FaInstagram,
   FaTwitter,
   FaVk,
@@ -75,11 +74,16 @@ interface Trailer {
   type: string;
 }
 
+interface Images {
+  id: number;
+  file_path: string;
+}
+
 const CardInfo = () => {
   const [infoCard, setInfoCard] = useState<CardInfoType | null>(null);
   const [persons, setPersons] = useState<PersonsType[]>([]);
   const [trailers, setTrailers] = useState<Trailer[]>([]);
-  const [images, setImages] = useState(null);
+  const [images, setImages] = useState<Images[]>([]);
 
   const context = useContext(IdInfoContext);
 
@@ -137,7 +141,6 @@ const CardInfo = () => {
         );
         const data = await response.json();
         setImages(data.posters);
-        console.log(data.posters);
       } catch (error) {
         console.log("Ошибка при загрузке данных изображений фильма:", error);
       }
@@ -264,17 +267,65 @@ const CardInfo = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-y-1 mt-10">
-        <p>Год: <span className="text-yellow-500 underline">{infoCard.release_date?.slice(0, 4) || "—"}</span></p>
-        <p>Страна: <span className="text-yellow-500 underline">{infoCard.production_countries.map(c => c.name).join(", ") || "—"}</span></p>
-        <p>Слоган: <span className="text-yellow-500 underline">{infoCard.tagline || "—"}</span></p>
-        <p>Жанр: <span className="text-yellow-500 underline">{infoCard.genres.slice(0, 2).map(g => g.name).join(", ") || "—"}</span></p>
-        <p>Сборы в мире: <span className="text-yellow-500 underline">{infoCard.revenue ? `${infoCard.revenue.toLocaleString()} $` : "—"}</span></p>
-        <p>Премьера: <span className="text-yellow-500 underline">{infoCard.release_date || "—"}</span></p>
-        <p>Возраст: <span className="text-yellow-500 underline">{infoCard.adult ? "18+" : "0+"}</span></p>
-        <p>Время: <span className="text-yellow-500 underline">{infoCard.runtime ? `${infoCard.runtime} мин.` : "—"}</span></p>
-        <p>Языки: <span className="text-yellow-500 underline">{infoCard.spoken_languages.map(lang => lang.name).join(", ") || "—"}</span></p>
+        <p>
+          Год:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.release_date?.slice(0, 4) || "—"}
+          </span>
+        </p>
+        <p>
+          Страна:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.production_countries.map((c) => c.name).join(", ") || "—"}
+          </span>
+        </p>
+        <p>
+          Слоган:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.tagline || "—"}
+          </span>
+        </p>
+        <p>
+          Жанр:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.genres
+              .slice(0, 2)
+              .map((g) => g.name)
+              .join(", ") || "—"}
+          </span>
+        </p>
+        <p>
+          Сборы в мире:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.revenue ? `${infoCard.revenue.toLocaleString()} $` : "—"}
+          </span>
+        </p>
+        <p>
+          Премьера:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.release_date || "—"}
+          </span>
+        </p>
+        <p>
+          Возраст:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.adult ? "18+" : "0+"}
+          </span>
+        </p>
+        <p>
+          Время:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.runtime ? `${infoCard.runtime} мин.` : "—"}
+          </span>
+        </p>
+        <p>
+          Языки:{" "}
+          <span className="text-yellow-500 underline">
+            {infoCard.spoken_languages.map((lang) => lang.name).join(", ") ||
+              "—"}
+          </span>
+        </p>
       </div>
-
 
       <div>
         <div className="mt-[60px] md:flex md:justify-between">
@@ -345,7 +396,7 @@ const CardInfo = () => {
         </div>
       </div>
 
-      {/* <div>
+      <div>
         <div className="flex justify-center mt-[25px] md:mt-[55px]">
           <div className="md:flex md:justify-between md:w-full">
             <p className="text-[#FFFFFF] font-bold text-2xl mb-[8px]">
@@ -355,12 +406,24 @@ const CardInfo = () => {
               Все постеры ➡
             </p>
           </div>
+
         </div>
+          <div className="grid grid-cols-2 gap-[12px] md:grid-cols-4 md:gap-[14px] xl:gap-[22px]">
+            {images.slice(0,4).map((items) => (
+              <div 
+              key={items.id}
+              className="relative overflow-hidden group"
+              >
+              <img src={`https://image.tmdb.org/t/p/w500${items.file_path}`} alt={`${items.file_path}`} className="w-[185px] h-[263px] md:w-[205px] md:h-[292px] xl:w-[339px] xl:h-[480px] rounded-[13px] object-cover" />
+              <div className="absolute inset-0 bg-[#3657CBA6] opacity-0 group-hover:opacity-60 duration-300 rounded-[13px]"></div>
+              </div>
+            ))}
+          </div>
       </div>
 
       <div>
         <div></div>
-      </div> */}
+      </div>
     </div>
   );
 };
