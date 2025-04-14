@@ -31,7 +31,8 @@ interface PopularPersonProps {
 const PopularPerson = () => {
   const [person, setPerson] = useState<PopularPersonProps[]>([]);
 
-  const personUrl = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
+  const personUrl =
+    "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
 
   useEffect(() => {
     fetch(personUrl, options)
@@ -67,9 +68,15 @@ const PopularPerson = () => {
                 </SheetTitle>
                 <SheetDescription>
                   <ul className="flex flex-col items-center gap-5 text-white">
-                    <li><a href="#">За год</a></li>
-                    <li><a href="#">За месяц</a></li>
-                    <li><a href="#">За неделю</a></li>
+                    <li>
+                      <a href="#">За год</a>
+                    </li>
+                    <li>
+                      <a href="#">За месяц</a>
+                    </li>
+                    <li>
+                      <a href="#">За неделю</a>
+                    </li>
                   </ul>
                 </SheetDescription>
               </SheetHeader>
@@ -79,7 +86,6 @@ const PopularPerson = () => {
       </div>
 
       <div className="mt-6 flex flex-col xl:flex-row xl:items-start xl:gap-6">
-
         <div className="flex flex-wrap justify-center gap-4 w-full xl:w-[70%]">
           {person.slice(1, 3).map((item) => (
             <div
@@ -91,12 +97,6 @@ const PopularPerson = () => {
                 alt={item.name}
                 className="w-full xl:rounded-[13px] xl:h-[450px] rounded-[13px] mb-2 object-cover h-full"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                <p className="text-white font-semibold">{item.name}</p>
-                <p className="text-gray-400 text-sm">
-                  {item.known_for_department}
-                </p>
-              </div>
             </div>
           ))}
         </div>
@@ -108,11 +108,19 @@ const PopularPerson = () => {
               <div key={item.id} className="mb-4 last:mb-0">
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="font-bold text-[15px] text-white">{item.name}</p>
-                    <p className="font-semibold text-[11px] text-[#3B486B]">{item.original_name}</p>
-                    <p className="text-[#F2F60F] font-normal text-[11px]">{randomAge} лет</p>
+                    <p className="font-bold text-[15px] text-white">
+                      {item.name}
+                    </p>
+                    <p className="font-semibold text-[11px] text-[#3B486B]">
+                      {item.original_name}
+                    </p>
+                    <p className="text-[#F2F60F] font-normal text-[11px]">
+                      {randomAge} лет
+                    </p>
                   </div>
-                  <p className="font-semibold text-[15px] text-[#F2F60F]">{index + 1}-место</p>
+                  <p className="font-semibold text-[15px] text-[#F2F60F]">
+                    {index + 1}-место
+                  </p>
                 </div>
                 <hr className="border-0 h-[2px] w-full bg-[#1E2538] mt-2" />
               </div>

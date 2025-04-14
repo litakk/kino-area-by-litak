@@ -5,12 +5,9 @@ import CardInfo from "@/section/cardInfo";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-interface CardPageProps {}
-
 const CardPage: React.FC<CardPageProps> = () => {
-
-const [background, setBackground] = useState<string>("/trailer.png")
-const params = useParams() as {id:string}
+  const [background, setBackground] = useState<string>("/trailer.png");
+  const params = useParams() as { id: string };
 
   return (
     <>
@@ -27,9 +24,9 @@ const params = useParams() as {id:string}
 
           <div className="relative  z-10 p-3 xl:py-4 lg:px-20">
             <Header />
-          <IdInfoContext value={{params, setBackground}}>
-          <CardInfo/>
-          </IdInfoContext>
+            <IdInfoContext.Provider value={{ params, setBackground }}>
+              <CardInfo />
+            </IdInfoContext.Provider>
             <Footer />
           </div>
         </div>
