@@ -203,7 +203,7 @@ const CardInfo = () => {
 
           <div className="w-[60%] xl:w-[40%]">
             <div>
-              <div className="flex items-center gap-1 text-[#4F5B7C]">
+              <div className="flex items-center gap-1 text-white">
                 Главная <MdKeyboardArrowRight /> Фильмы <MdKeyboardArrowRight />
                 <span className="text-white">{infoCard.title}</span>
               </div>
@@ -408,13 +408,13 @@ const CardInfo = () => {
           </div>
 
         </div>
-          <div className="grid grid-cols-2 gap-[12px] md:grid-cols-4 md:gap-[14px] xl:gap-[22px]">
+          <div className="grid grid-cols-2 gap-[12px] md:grid-cols-4 md:gap-[14px] xl:gap-[22px] mb-5">
             {images.slice(0,4).map((items) => (
               <div 
               key={items.id}
               className="relative overflow-hidden group"
               >
-              <img src={`https://image.tmdb.org/t/p/w500${items.file_path}`} alt={`${items.file_path}`} className="w-[185px] h-[263px] md:w-[205px] md:h-[292px] xl:w-[339px] xl:h-[480px] rounded-[13px] object-cover" />
+              <img src={`https://image.tmdb.org/t/p/w500${items.file_path}`} alt={`${items.file_path}`} className="w-[100%] h-auto rounded-[13px] object-cover" />
               <div className="absolute inset-0 bg-[#3657CBA6] opacity-0 group-hover:opacity-60 duration-300 rounded-[13px]"></div>
               </div>
             ))}

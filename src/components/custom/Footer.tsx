@@ -10,7 +10,12 @@ function Footer() {
     <>
       <div
         className="w-full flex flex-col items-center px-6 rounded-[8px]"
-        style={{ backgroundImage: "url('/footerBackground.png')" }}
+        style={{ 
+          backgroundImage: "url('/footerBackground.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         <div>
           <img className="mt-[26px]" src="/footerLogo.png" alt="footer-logo" />

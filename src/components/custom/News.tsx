@@ -33,7 +33,7 @@ const EndNews: React.FC<EndNewsProps> = () => {
 
   return (
     <>
-      <div className="mt-8">
+      <div className="mb-5">
         <div className="flex flex-col  items-center md:flex-row justify-between md:items-center">
           <h1 className="font-black text-2xl text-white text-nowrap md:text-4xl">
             Последние новости
@@ -44,11 +44,11 @@ const EndNews: React.FC<EndNewsProps> = () => {
           </p>
         </div>
 
-        <div className="w-full mt-5  justify-between xl:flex gap-1">
+        <div className="w-full mt-5 justify-between xl:flex gap-1">
           <div
             className="w-full h-[245px] bg-no-repeat bg-cover relative rounded-[10px] bg-center p-3  xl:px-5 py-10 md:h-[450px] lg:h-[550px] xl:h-[700px] "
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/w500${endNew[0]?.backdrop_path})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${endNew[0]?.backdrop_path})`,
             }}
           >
             <div className="flex flex-col h-full justify-between relative z-30 ">

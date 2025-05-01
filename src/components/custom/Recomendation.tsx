@@ -20,7 +20,7 @@ interface movie {
   genre_ids: number[];
 }
 
-const Recomendation: React.FC = () => {
+const Recomendation: React.FC<movie> = () => {
   const [movie, setMovie] = useState<movie[]>([]);
   const [genre, setGenre] = useState<{ [key: number]: string }>({});
 

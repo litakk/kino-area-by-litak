@@ -17,7 +17,6 @@ import "swiper/css/pagination";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import { options } from "@/exports";
-import { Button } from "../ui/button";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 interface PopularFilmProps {
@@ -36,6 +35,7 @@ interface PopularFilmProps {
   vote_average: number;
   vote_count: number;
 }
+
 const timesArr: string[] = [
   "Всё время",
   "2020",
@@ -104,11 +104,7 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
           </p>
 
           {/* Центр — Линия (только XL) */}
-          <img
-            src="/line.png"
-            alt="line"
-            className="hidden xl:block"
-          />
+          <img src="/line.png" alt="line" className="hidden xl:block" />
 
           {/* Справа — Список годов (только от md и выше) */}
           <div className="hidden md:flex gap-8 xl:w-auto">
@@ -171,7 +167,7 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
               nextEl: nextRef.current,
             }}
             onSlideChange={handleSlideChange}
-            spaceBetween={50}
+            spaceBetween={20}
             breakpoints={{
               320: {
                 slidesPerView: 2,
@@ -192,7 +188,7 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
                 <div
                   onMouseEnter={() => handleMouseEnter(item.id)}
                   onMouseLeave={() => handleMouseLeave(item.id)}
-                  className="w-[178px] h-[250px] relative bg-cover bg-no-repeat bg-center rounded-lg md:h-[286px] md:w-[210px] lg:w-[202px] lg:h-[297px] xl:w-[290px] xl:h-[420px] 2xl:w-[340px] 2xl:h-[480px]"
+                  className="w-[100%] h-[250px] relative bg-cover bg-no-repeat bg-center rounded-lg md:h-[286px] lg:h-[297px] xl:h-[420px] 2xl:h-[480px]"
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})`,
                   }}
@@ -219,18 +215,7 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-2 pointer-events-none"
                                         }`}
-                  >
-                    <Button
-                      className={`max-w-full cursor-pointer bg-white text-[#3657CB] font-bold text-sm py-[22px] transition-all duration-500 ease-out hover:scale-[0.9] hover:bg-white
-                                            ${
-                                              hoverStates[item.id]
-                                                ? "opacity-100 translate-y-0"
-                                                : "opacity-0 translate-y-4"
-                                            }`}
-                    >
-                      Карточка фильма
-                    </Button>
-                  </div>
+                  ></div>
                 </div>
                 <p className="font-semibold text-white text-[15px] truncate-text">
                   {item.title}
