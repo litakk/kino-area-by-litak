@@ -5,15 +5,17 @@ import PopularMovie from "@/components/custom/PopularMovie";
 import PopularPerson from "@/components/custom/PopularPerson";
 import Recomendation from "@/components/custom/Recomendation";
 import Trailer from "@/components/custom/Trailer";
+import { useState } from "react";
 
 export default function Home() {
+  const [mainBg] = useState<string>("/defoultBg.png")
   return (
     <div className="bg-[#1E2538]">
       <div className="absolute w-full z-0">
         <div
           className="h-[100vh] bg object-cover"
           style={{
-            backgroundImage: `url(${backgroundPhotos})`,
+            backgroundImage: `url(${mainBg})`,
             backgroundSize: `cover`,
             backgroundPosition: `center`,
             backgroundRepeat: "no-repeat",

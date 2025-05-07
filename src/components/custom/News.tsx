@@ -1,5 +1,4 @@
 import { options } from "@/exports";
-import { url } from "inspector";
 import React, { useEffect, useState } from "react";
 import { FaArrowRightLong, FaRegComment, FaRegEye } from "react-icons/fa6";
 
@@ -9,7 +8,7 @@ interface EndNewsProps {
   first_air_date: string;
   genre_ids: number[];
   id: number;
-  name: string;ё
+  name: string;
   origin_country: string[];
   original_language: string;
   original_name: string;
@@ -20,7 +19,7 @@ interface EndNewsProps {
   vote_count: number;
 }
 
-const EndNews: React.FC<EndNewsProps> = () => {
+const EndNews: React.FC = () => {
   const endNewsUrl =
     "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1";
   const [endNew, setEndNew] = useState<EndNewsProps[]>([]);

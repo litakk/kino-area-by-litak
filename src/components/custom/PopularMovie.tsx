@@ -46,7 +46,7 @@ const timesArr: string[] = [
   "2015",
 ];
 
-const PopularFilm: React.FC<PopularFilmProps> = () => {
+const PopularFilm: React.FC = () => {
   const [actText, setActText] = useState<null | string | number>(0);
   const [popular, setPopular] = useState<PopularFilmProps[]>([]);
   const [hoverStates, setHoverStates] = useState<{ [key: number]: boolean }>(
