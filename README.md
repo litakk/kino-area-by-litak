@@ -27,32 +27,32 @@ const genresUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
 const popularPeopleUrl = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
 const nowPlayingUrl = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 const airingTodayUrl = "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1";
-
-⚙️ Установка и запуск
-Клонировать репозиторий:
+```
+## ⚙️ Установка и запуск
+## Клонировать репозиторий:
 
 git clone https://github.com/litakk/kino-area-by-litak.git
 cd kino-area-by-litak
 
-Установить зависимости:
+## Установить зависимости:
 
 npm install
 
 NEXT_PUBLIC_TMDB_API_KEY=your_api_key_here
 
-Создать .env.local файл с API ключом:
+## Создать .env файл с API ключом:
 
-NEXT_PUBLIC_TMDB_API_KEY=your_api_key_here
+NEXT_PUBLIC_AUTHORIZATION=your_api_key_here
 
-Запустить проект:
+## Запустить проект:
 
 npm run dev
 
-🚀 Деплой
+## 🚀 Деплой
 Проект развернут на Vercel:
 https://kino-area-by-litak.vercel.app/
 
-📄 Документация проекта
+## 📄 Документация проекта
 Архитектура
 Клиентский рендеринг (CSR) через fetch в useEffect
 
@@ -78,6 +78,6 @@ Mobile-first верстка
 
 Добавление тестирования
 
-🤝 Контакты
-Автор: Litakk
+## 🤝 Контакты
+## Автор: Litakk
 GitHub: https://github.com/litakk
