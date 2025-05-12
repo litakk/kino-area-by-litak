@@ -5,10 +5,11 @@ import CardInfo from "@/section/cardInfo";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-const CardPage: React.FC<CardPageProps> = () => {
-  const [background, setBackground] = useState<string>("/trailer.png");
-  const params = useParams() as { id: string };
-
+const CardPage: React.FC = () => {
+  const [background, setBackground] = useState<string | undefined>("/trailer.png");
+  const params = useParams() as { id: string } | null;
+  if (!params?.id) return null;
+  
   return (
     <>
       <>
