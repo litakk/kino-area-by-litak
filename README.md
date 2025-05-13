@@ -1,83 +1,90 @@
-# Kino Area by litakk 🎬
+# 🎬 Kino Area by litakk
 
-Веб-приложение для просмотра фильмов и получения подробной информации о них.
+A modern web application for browsing movies and viewing detailed information about them.
 
-**Демо:** [https://kino-area-by-litak.vercel.app/](https://kino-area-by-litak.vercel.app/)
+**🔗 Live Demo:** [kino-area-by-litak.vercel.app](https://kino-area-by-litak.vercel.app/)
 
-## 📚 Описание проекта
+## 📚 Project Description
 
-Проект реализует следующие функции:
-- Просмотр популярных фильмов
-- Просмотр текущих фильмов в прокате
-- Просмотр популярных актёров
-- Просмотр сериалов, выходящих сегодня
-- Отображение трейлеров и подробной информации о фильмах
+Kino Area provides a user-friendly interface to explore movie and TV content. Core features include:
 
-## 🛠 Технологический стек
-- **React** - библиотека для построения интерфейсов
-- **TypeScript** - статическая типизация
-- **Next.js (Pages Router)** - фреймворк для роутинга
-- **TailwindCSS** - mobile-first стилизация
-- **TMDB API** - данные о фильмах и сериалах
+- 🔥 Browse popular movies  
+- 🎞 See what's now playing in theaters  
+- 🌟 Discover trending actors  
+- 📺 View TV shows airing today  
+- 🎬 Watch trailers and access detailed movie data  
 
-## 🌐 Используемые API эндпоинты
-```javascript
+## 🛠 Tech Stack
+
+- **React** – for building interactive UIs  
+- **TypeScript** – for static typing and code reliability  
+- **Next.js (Pages Router)** – for routing and performance  
+- **Tailwind CSS** – for responsive, mobile-first styling  
+- **TMDB API** – for real-time movie and TV data  
+
+## 🌐 API Endpoints Used
+
+```ts
 const popularUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 const genresUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
 const popularPeopleUrl = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
 const nowPlayingUrl = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 const airingTodayUrl = "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1";
 ```
-## ⚙️ Установка и запуск
-## Клонировать репозиторий:
 
-git clone https://github.com/litakk/kino-area-by-litak.git
-cd kino-area-by-litak
+## ⚙️ Installation & Setup
 
-## Установить зависимости:
+1. **Clone the repository:**
 
-npm install
+   ```bash
+   git clone https://github.com/litakk/kino-area-by-litak.git
+   cd kino-area-by-litak
+   ```
 
-NEXT_PUBLIC_TMDB_API_KEY=your_api_key_here
+2. **Install dependencies:**
 
-## Создать .env файл с API ключом:
+   ```bash
+   npm install
+   ```
 
-NEXT_PUBLIC_AUTHORIZATION=your_api_key_here
+3. **Create a `.env` file with your API key:**
 
-## Запустить проект:
+   ```env
+   NEXT_PUBLIC_AUTHORIZATION=your_api_key_here
+   ```
 
-npm run dev
+4. **Run the development server:**
 
-## 🚀 Деплой
-Проект развернут на Vercel:
-https://kino-area-by-litak.vercel.app/
+   ```bash
+   npm run dev
+   ```
 
-## 📄 Документация проекта
-Архитектура
-Клиентский рендеринг (CSR) через fetch в useEffect
+## 🚀 Deployment
 
-Компонентный подход
+This project is deployed using [Vercel](https://vercel.com/):  
+🔗 [kino-area-by-litak.vercel.app](https://kino-area-by-litak.vercel.app/)
 
-Mobile-first верстка
+## 📄 Project Architecture
 
-Основные компоненты
-Карточки фильмов/актёров
+- ⚛️ **Client-side rendering (CSR)** using `fetch` in `useEffect`  
+- 🧩 **Component-based architecture** for reusability and scalability  
+- 📱 **Mobile-first responsive layout** using Tailwind CSS  
 
-Карусели для отображения коллекций
+## 🧱 Core Components
 
-Страницы с детальной информацией
+- 🎞 **Movie and actor cards** with dynamic content  
+- 🎠 **Carousels** for displaying movie collections  
+- 📄 **Detailed pages** for movies and TV shows  
+- 📱 **Responsive design** for mobile and desktop  
 
-Адаптивный интерфейс
+## 🔮 Future Improvements
 
-Планы по развитию
-Добавление новых страниц
+- ➕ Add new pages and extended content  
+- 🎛 Implement advanced filtering and sorting  
+- ⚙️ Optimize performance and internal logic  
+- 🧪 Add unit and integration tests  
 
-Реализация фильтрации
+## 🤝 Contact
 
-Улучшение логики работы
-
-Добавление тестирования
-
-## 🤝 Контакты
-## Автор: Litakk
-GitHub: https://github.com/litakk
+**Author:** Litakk  
+**GitHub:** [https://github.com/litakk](https://github.com/litakk)
