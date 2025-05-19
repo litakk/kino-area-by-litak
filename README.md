@@ -1,40 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🎬 Kino Area by litakk
 
-## Getting Started
+A modern web application for browsing movies and viewing detailed information about them.
 
-First, run the development server:
+**🔗 Live Demo:** [kino-area-by-litak.vercel.app](https://kino-area-by-litak.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📚 Project Description
+
+Kino Area provides a user-friendly interface to explore movie and TV content. Core features include:
+
+- 🔥 Browse popular movies  
+- 🎞 See what's now playing in theaters  
+- 🌟 Discover trending actors  
+- 📺 View TV shows airing today  
+- 🎬 Watch trailers and access detailed movie data  
+
+## 🛠 Tech Stack
+
+- **React** – for building interactive UIs  
+- **TypeScript** – for static typing and code reliability  
+- **Next.js (Pages Router)** – for routing and performance  
+- **Tailwind CSS** – for responsive, mobile-first styling  
+- **TMDB API** – for real-time movie and TV data  
+
+## 🌐 API Endpoints Used
+
+```ts
+const popularUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+const genresUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
+const popularPeopleUrl = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
+const nowPlayingUrl = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+const airingTodayUrl = "https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1";
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Installation & Setup
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+   ```bash
+   git clone https://github.com/litakk/kino-area-by-litak.git
+   cd kino-area-by-litak
+   ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+2. **Install dependencies:**
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Create a `.env` file with your API key:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```env
+   NEXT_PUBLIC_AUTHORIZATION=your_api_key_here
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+4. **Run the development server:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+## 🚀 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is deployed using [Vercel](https://vercel.com/):  
+🔗 [kino-area-by-litak.vercel.app](https://kino-area-by-litak.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 📄 Project Architecture
+
+- ⚛️ **Client-side rendering (CSR)** using `fetch` in `useEffect`  
+- 🧩 **Component-based architecture** for reusability and scalability  
+- 📱 **Mobile-first responsive layout** using Tailwind CSS  
+
+## 🧱 Core Components
+
+- 🎞 **Movie and actor cards** with dynamic content  
+- 🎠 **Carousels** for displaying movie collections  
+- 📄 **Detailed pages** for movies and TV shows  
+- 📱 **Responsive design** for mobile and desktop  
+
+## 🔮 Future Improvements
+
+- ➕ Add new pages and extended content  
+- 🎛 Implement advanced filtering and sorting  
+- ⚙️ Optimize performance and internal logic  
+- 🧪 Add unit and integration tests  
+
+## 🤝 Contact
+
+**Author:** Litakk  
+**GitHub:** [https://github.com/litakk](https://github.com/litakk)

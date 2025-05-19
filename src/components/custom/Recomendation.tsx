@@ -25,7 +25,6 @@ const Recomendation: React.FC = () => {
   const [genre, setGenre] = useState<{ [key: number]: string }>({});
   const [showMore, setShowMore] = useState<number>(8);
 
-  // Состояние выбранного жанра
   const [selectedGenre, setSelectedGenre] = useState<string>("Все");
 
   const genresList = [
@@ -38,7 +37,6 @@ const Recomendation: React.FC = () => {
     "Драма",
   ];
 
-  // Сопоставление русских жанров с ID из TMDB
   const genreNameToId: { [key: string]: number } = {
     Все: 0,
     Боевики: 28,
@@ -75,7 +73,6 @@ const Recomendation: React.FC = () => {
       });
   }, []);
 
-  // Фильтрация фильмов по выбранному жанру
   const filteredMovies =
     selectedGenre === "Все"
       ? movie
@@ -99,7 +96,6 @@ const Recomendation: React.FC = () => {
             />
           </div>
 
-          {/* Десктоп меню с кнопками фильтрации */}
           <div>
             <ul className="hidden md:flex flex-row items-center gap-5 xl:gap-7 text-white mt-[10px] font-bold text-[15px] xl:text-[18px]">
               {genresList.map((g) => (
@@ -118,7 +114,6 @@ const Recomendation: React.FC = () => {
           </div>
         </div>
 
-        {/* Мобильное меню с фильтрацией */}
         <div>
           <Sheet>
             <SheetTrigger className="md:hidden">
@@ -153,7 +148,6 @@ const Recomendation: React.FC = () => {
         </div>
       </div>
 
-      {/* Карточки фильмов */}
       <div className="w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 mt-[28px] gap-4 justify-between w-full">
           {filteredMovies.slice(0, showMore).map((item) => (
@@ -188,7 +182,6 @@ const Recomendation: React.FC = () => {
         </div>
       </div>
 
-      {/* Кнопка "Все новинки" */}
       <div className="flex justify-center mt-[25px] md:mt-[51px]">
         <Button
           onClick={() => setShowMore((prev) => prev + 12)}
