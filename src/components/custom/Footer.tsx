@@ -10,7 +10,7 @@ function Footer() {
     <>
       <div
         className="w-full flex flex-col items-center px-6 rounded-[8px]"
-        style={{ 
+        style={{
           backgroundImage: "url('/footerBackground.png')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -47,20 +47,20 @@ function Footer() {
               Подписаться
             </Button>
           </div>
-          </div>
+        </div>
 
-          <div className="flex items-start gap-2 lg:mt-6">
-            <input
-              type="checkbox"
-              className="w-5 h-5 border-gray-300 rounded-sm checked:bg-yellow-500 focus:ring-0"
-            />
-            <p className="text-white mb-[43px] lg:mb-[80px]">
-              Соглашаюсь на условия{" "}
-              <span className="text-yellow-300 underline">
-                политики конфиденциальности
-              </span>
-            </p>
-          </div>
+        <div className="flex items-start gap-2 lg:mt-6">
+          <input
+            type="checkbox"
+            className="w-5 h-5 border-gray-300 rounded-sm checked:bg-yellow-500 focus:ring-0"
+          />
+          <p className="text-white mb-[43px] lg:mb-[80px]">
+            Соглашаюсь на условия
+            <span className="text-yellow-300 underline">
+              политики конфиденциальности
+            </span>
+          </p>
+        </div>
       </div>
 
       <div>
@@ -73,8 +73,8 @@ function Footer() {
             <FaYoutube />
           </div>
 
-          <div className="flex justify-center font-semibold text-[#FFFFFF] lg:mt-[34px]">
-            <ul className="space-y-[10px] md:flex md:gap-5">
+          <div className="flex justify-center font-semibold text-[#FFFFFF] lg:mt-[34px] mx-auto">
+            <ul className="space-y-[10px] text-center md:flex md:gap-5">
               <li>
                 <a href="#">Афиша</a>
               </li>
@@ -100,8 +100,10 @@ function Footer() {
           </div>
 
           <div className="flex flex-col mx-auto font-medium text-[#E3E6F0B8] mt-[14px] lg:mt-[40px]">
-            <p>2020 © Kinoarea. Все права защищены</p>
-            <p className="underline lg:mt-[26px] mb-[50px]">Политика конфиденциальности</p>
+            <p>2025 © Kinoarea. Все права защищены</p>
+            <p className="underline lg:mt-[26px] mb-[50px]">
+              Политика конфиденциальности
+            </p>
           </div>
         </div>
       </div>
