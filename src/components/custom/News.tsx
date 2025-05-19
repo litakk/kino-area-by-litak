@@ -38,7 +38,7 @@ const EndNews: React.FC = () => {
             Последние новости
           </h1>
           <p className="flex text-white items-center gap-2 cursor-pointer transition-all duration-150 ease-in font-medium text-lg mt-2  hover:text-gray-300">
-            {" "}
+            
             Все новости <FaArrowRightLong color="white" />
           </p>
         </div>
@@ -54,20 +54,20 @@ const EndNews: React.FC = () => {
               <div className="flex gap-3 items-center">
                 <p className="flex items-center text-white gap-1 font-semibold text-[13px]">
                   15 Апр 2020
-                </p>{" "}
+                </p>
                 <p className="flex items-center text-white gap-1 font-semibold text-[13px]">
-                  {" "}
+                  
                   <FaRegEye size={18} color="white" />
                   242
                 </p>
                 <p className="flex items-center text-white gap-1 font-semibold text-[13px]">
-                  {" "}
+                  
                   <FaRegComment size={18} color="white" />
                   13
                 </p>
               </div>
               <div>
-                {" "}
+                
                 <p className="font-black text-xl text-white  xl:text-[25px]">
                   {endNew[0]?.name}
                 </p>

@@ -98,15 +98,13 @@ const PopularFilm: React.FC = () => {
     <>
       <div className="mt-8">
         <div className="flex flex-row justify-center  md:flex-col xl:flex-row xl:justify-between xl:items-center gap-2 xl:gap-4 mb-6">
-          {/* Слева — Заголовок */}
+          
           <p className="font-black text-2xl md:text-4xl text-white whitespace-nowrap">
             Популярные фильмы
           </p>
 
-          {/* Центр — Линия (только XL) */}
           <img src="/line.png" alt="line" className="hidden xl:block" />
 
-          {/* Справа — Список годов (только от md и выше) */}
           <div className="hidden md:flex gap-8 xl:w-auto">
             {timesArr.map((str, indx) => (
               <p
@@ -124,7 +122,6 @@ const PopularFilm: React.FC = () => {
             ))}
           </div>
 
-          {/* Мобильное меню (бургер) — только для md и ниже */}
           <div className="mb-[4px] md:hidden">
             <Sheet>
               <SheetTrigger className="h-7 w-7 flex items-center justify-center rounded-[5px] cursor-pointer transition-all ease-in">

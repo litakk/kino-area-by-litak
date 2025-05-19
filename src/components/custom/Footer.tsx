@@ -30,7 +30,7 @@ function Footer() {
         <div className="w-full">
           <p className="text-[#FFFFFF] text-[15px] mt-[21px] text-center lg:mt-[26px]">
             Если хотите быть в курсе последних новостей и новинок кино -
-            заполните форму ниже и оформите бесплатную E-mail рассылку!{" "}
+            заполните форму ниже и оформите бесплатную E-mail рассылку!
           </p>
         </div>
 
