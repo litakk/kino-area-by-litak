@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { options } from "@/exports";
 
-interface movie {
+interface Movie {
   id: number;
   title: string;
   poster_path: string;
@@ -21,10 +21,33 @@ interface movie {
 }
 
 const Recomendation: React.FC = () => {
-  const [movie, setMovie] = useState<movie[]>([]);
+  const [movie, setMovie] = useState<Movie[]>([]);
   const [genre, setGenre] = useState<{ [key: number]: string }>({});
-
   const [showMore, setShowMore] = useState<number>(8);
+
+  // Состояние выбранного жанра
+  const [selectedGenre, setSelectedGenre] = useState<string>("Все");
+
+  const genresList = [
+    "Все",
+    "Боевики",
+    "Приключения",
+    "Комедии",
+    "Фантастика",
+    "Триллеры",
+    "Драма",
+  ];
+
+  // Сопоставление русских жанров с ID из TMDB
+  const genreNameToId: { [key: string]: number } = {
+    Все: 0,
+    Боевики: 28,
+    Приключения: 12,
+    Комедии: 35,
+    Фантастика: 878,
+    Триллеры: 53,
+    Драма: 18,
+  };
 
   const movieUrl =
     "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
@@ -52,6 +75,12 @@ const Recomendation: React.FC = () => {
       });
   }, []);
 
+  // Фильтрация фильмов по выбранному жанру
+  const filteredMovies =
+    selectedGenre === "Все"
+      ? movie
+      : movie.filter((m) => m.genre_ids.includes(genreNameToId[selectedGenre]));
+
   return (
     <>
       <div className="flex items-center justify-center md:justify-start gap-3 xl:mt-[51px] mt-[26px] mb-[21px]">
@@ -70,33 +99,26 @@ const Recomendation: React.FC = () => {
             />
           </div>
 
+          {/* Десктоп меню с кнопками фильтрации */}
           <div>
             <ul className="hidden md:flex flex-row items-center gap-5 xl:gap-7 text-white mt-[10px] font-bold text-[15px] xl:text-[18px]">
-              <li>
-                <a href="#">Все</a>
-              </li>
-              <li>
-                <a href="#">Боевики</a>
-              </li>
-              <li>
-                <a href="#">Приключения</a>
-              </li>
-              <li>
-                <a href="#">Комедии</a>
-              </li>
-              <li>
-                <a href="#">Фантастика</a>
-              </li>
-              <li>
-                <a href="#">Триллеры</a>
-              </li>
-              <li>
-                <a href="#">Драма</a>
-              </li>
+              {genresList.map((g) => (
+                <li key={g}>
+                  <button
+                    onClick={() => setSelectedGenre(g)}
+                    className={`${
+                      selectedGenre === g ? "text-yellow-400" : "text-white"
+                    } hover:text-yellow-400`}
+                  >
+                    {g}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
+        {/* Мобильное меню с фильтрацией */}
         <div>
           <Sheet>
             <SheetTrigger className="md:hidden">
@@ -109,27 +131,20 @@ const Recomendation: React.FC = () => {
                 </SheetTitle>
                 <SheetDescription>
                   <ul className="flex flex-col gap-5 text-white ">
-                    <li>
-                      <a href="#">Все</a>
-                    </li>
-                    <li>
-                      <a href="#">Боевики</a>
-                    </li>
-                    <li>
-                      <a href="#">Приключения</a>
-                    </li>
-                    <li>
-                      <a href="#">Комедии</a>
-                    </li>
-                    <li>
-                      <a href="#">Фантастика</a>
-                    </li>
-                    <li>
-                      <a href="#">Триллеры</a>
-                    </li>
-                    <li>
-                      <a href="#">Драма</a>
-                    </li>
+                    {genresList.map((g) => (
+                      <li key={g}>
+                        <button
+                          onClick={() => setSelectedGenre(g)}
+                          className={`${
+                            selectedGenre === g
+                              ? "text-yellow-400"
+                              : "text-white"
+                          } hover:text-yellow-400 w-full text-left`}
+                        >
+                          {g}
+                        </button>
+                      </li>
+                    ))}
                   </ul>
                 </SheetDescription>
               </SheetHeader>
@@ -137,14 +152,13 @@ const Recomendation: React.FC = () => {
           </Sheet>
         </div>
       </div>
+
+      {/* Карточки фильмов */}
       <div className="w-full">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 mt-[28px] gap-4 justify-between w-full">
-          {movie.slice(0, showMore).map((item) => (
+          {filteredMovies.slice(0, showMore).map((item) => (
             <Link href={`/cardpage/${item.id}`} key={item.id}>
-              <div
-                key={item.id}
-                className="relative w-full overflow-hidden group cursor-pointer"
-              >
+              <div className="relative w-full overflow-hidden group cursor-pointer">
                 <div className="relative group-hover:opacity-80">
                   <img
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -174,6 +188,7 @@ const Recomendation: React.FC = () => {
         </div>
       </div>
 
+      {/* Кнопка "Все новинки" */}
       <div className="flex justify-center mt-[25px] md:mt-[51px]">
         <Button
           onClick={() => setShowMore((prev) => prev + 12)}

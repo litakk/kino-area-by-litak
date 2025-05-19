@@ -8,7 +8,7 @@ import Trailer from "@/components/custom/Trailer";
 import { useState } from "react";
 
 export default function Home() {
-  const [mainBg] = useState<string>("/defoultBg.png")
+  const [mainBg] = useState<string>("/bg.png")
   return (
     <div className="bg-[#1E2538]">
       <div className="absolute w-full z-0">
